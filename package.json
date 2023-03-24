@@ -1,12 +1,28 @@
 {
   "name": "monorepo",
   "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ua4iugi/monorepo.git"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npx only-allow pnpm"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "workspaces": [
+    "packages/web/*",
+    "packages/api/*",
+    "packages/lib/*",
+    "packages/doc/*"
+  ],
+  "engines": {
+    "node": ">=16.19.1",
+    "pnpm": ">=7.30.0"
+  },
+  "packageManager": "pnpm@7.30.0",
+  "devDependencies": {
+    "only-allow": "^1.1.1"
+  }
 }

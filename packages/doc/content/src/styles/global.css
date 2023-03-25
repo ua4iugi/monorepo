@@ -22,3 +22,9 @@
   --width-card-wide: 800px;
   --width-content: 1080px;
 }
+nav {
+  margin-bottom: 1rem;
+}
+footer, header, main {
+  padding: 1rem 1rem;
+}

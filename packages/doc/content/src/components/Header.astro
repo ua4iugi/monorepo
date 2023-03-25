@@ -1,5 +1,6 @@
 ---
 import Navigation from "./Navigation.astro";
+const { pageTitle } = Astro.props;
 ---
 
 <header>
@@ -7,4 +8,5 @@ import Navigation from "./Navigation.astro";
     <a href="/"><img src="https://via.placeholder.com/200x70/79b74a/fff.jpg/?text=UA4IUGI" /></a>
     <Navigation />
   </nav>
+  <h1>{pageTitle}</h1>
 </header>

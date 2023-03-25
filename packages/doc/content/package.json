@@ -1,5 +1,5 @@
 {
-  "name": "@example/minimal",
+  "name": "@ua4iugi/content",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -11,9 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^1.2.0",
     "@astrojs/rss": "^2.0.0",
-    "astro": "^1.9.1",
-    "preact": "^10.11.3"
+    "@astrojs/svelte": "^2.1.0",
+    "astro": "^1.9.1"
   }
 }

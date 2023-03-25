@@ -28,7 +28,7 @@ const { posts } = Astro.props;
   <p>Posts tagged with {tag}</p>
   <ul>
     {
-      posts.map((post) => (
+      posts.map((post: { url: any; frontmatter: { title: any } }) => (
         <BlogPost url={post.url} title={post.frontmatter.title} />
       ))
     }

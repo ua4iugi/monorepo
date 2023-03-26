@@ -1,7 +1,7 @@
 {
-  "name": "example-fastify",
+	"name": "@ua4iugi/kamuy-api",
+	"version": "0.0.1",
   "private": true,
-  "version": "0.13.6",
   "scripts": {
     "start": "ts-node src/index.ts",
     "check": "tsc --pretty --noEmit"

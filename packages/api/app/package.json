@@ -7,12 +7,13 @@
     "check": "tsc --pretty --noEmit"
   },
   "dependencies": {
-    "graphql-yoga": "3.7.3",
     "fastify": "4.15.0",
+    "graphql-yoga": "3.7.3",
     "pino-pretty": "10.0.0"
   },
   "devDependencies": {
-    "@types/node": "18.15.7",
-    "ts-node": "10.9.1"
+    "@types/node": "18.15.10",
+    "ts-node": "10.9.1",
+    "typescript": "^5.0.0"
   }
 }

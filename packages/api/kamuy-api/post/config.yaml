@@ -1,0 +1,5 @@
+configurationset:
+  - configuration:
+      name: curl_import_config
+      access_control_request_headers_684888c0eb: "*"
+      api_key_a77eab01a7: xhbRDK7QxE6ye5JQiEt0WmHniR74qpWRNdmKLLwWYLHqJz5mdbDEASUeGV67rBOC

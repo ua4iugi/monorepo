@@ -1,0 +1,31 @@
+type DocumentsEntry {
+  _id: String
+  authorId: String
+  body: String
+  slug: String
+  title: String
+}
+type Root {
+  documents: [DocumentsEntry]
+}
+
+type Query {
+  myQuery(
+    collection: String
+    dataSource: String
+    database: String
+    limit: Int
+  ): Root
+    @rest(
+      method: POST
+      endpoint: "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-gipvp/endpoint/data/v1/action/find"
+      headers: [
+        {
+          name: "access-control-request-headers"
+          value: "$access_control_request_headers_684888c0eb;"
+        }
+        { name: "api-key", value: "$api_key_a77eab01a7;" }
+      ]
+      configuration: "curl_import_config"
+    )
+}

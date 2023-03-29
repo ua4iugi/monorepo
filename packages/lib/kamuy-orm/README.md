@@ -1,58 +1,55 @@
-# create-svelte
+# Kamuy-ORM
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+- TypeScript プロジェクトの作成と Prisma のセットアップ
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+  ```sh
+  $ pnpm init
+  $ pnpm add -D typescript ts-node @types/node
+  $ pnpm exec tsc --init
+  $ pnpm add -D prisma
+  $ pnpm exec prisma init --datasource-provider=mongodb
+  ```
 
-## Creating a project
+- データベースを接続する
 
-If you're seeing this, you've probably already done this step. Congrats!
+  - [MongoDB Cloud] をセットアップする
+    - サインアップする(Google|GitHub と ID 連携も OK)
+    - ログインする
+    - `ORGANIZATION` からプロジェクトを作成する(`kamuy-db`)
+    - `Database` からクラスターを作成する(`Cluster0`)
+      - `Browse Collections` からデータベースを作成する(`kamuy`)
+        - `kamuy` ユーザのパスワードを記録しておく
+      - `Connect` の `Connect you application` から URL を記録する
+        - 例:`mongodb+srv://kamuy:<password>@cluster0.riulps0.mongodb.net/?retryWrites=true&w=majority`
+    - `Data API` からデータAPIをセットアップする
+      - [Read and Write with the Data API](https://www.mongodb.com/docs/atlas/api/data-api/)
+      - `Data API Key` を記録しておく
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- Prisma と データベースのモデルを同期する
+  - Prisma の DB 接続先を設定する(`.env`)
+    - 下記の `<password>` は上記で記録した `kamuy` ユーザのパスワードを指定する
+      ```text
+      DATABASE_URL="mongodb+srv://kamuy:<password>@cluster0.riulps0.mongodb.net/kamuy"
+      ```
+  - Prisma のスキーマを作成する
+    - 参考:[Creating the Prisma schema](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb/creating-the-prisma-schema-typescript-mongodb)
+  - Prisma クライアントのインストールと生成する
+    - インストールする(`$ pnpm add @prisma/client`)
+    - 生成する(`pnpm exec prisma generate`)
+  - データベースへ初期データを作成する
+    - ビルドルールへ初期データ作成スクリプトを登録する(`package.json`)
+      ```text
+      "prisma": {
+        "seed": "ts-node prisma/seed.ts"
+      },
+      ```
+    - 初期データ作成スクリプトを作成する
+      - 参考:[Querying the database](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb/querying-the-database-typescript-mongodb)
+    - データベースへ初期データを作成する(`$ pnpm exec prisma db seed`)
+      - キー制約エラー回避のためデータを登録する前に該当テーブルを削除する
+        ```text
+        await prisma.post.deleteMany();
+        await prisma.user.deleteMany();
+        ```
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```bash
-npm run package
-```
-
-To create a production version of your showcase app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
-```
+[MongoDB Cloud]: https://cloud.mongodb.com/

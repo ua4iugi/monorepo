@@ -34,8 +34,8 @@
   - Bearer 認証
     - 上記レスポンスのアクセストークンをBearerに指定する(`Authorization`ヘッダ)
     ```sh
-    curl -X POST 'https://realm.mongodb.com/api/client/v2.0/app/data-gipvp/graphql' \
-    --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYWFzX2RldmljZV9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImJhYXNfZG9tYWluX2lkIjoiNjQyM2EwYzhmZTNiZjNhM2NhMmQzYTMwIiwiZXhwIjoxNjgwMTYxNjM1LCJpYXQiOjE2ODAxNTk4MzUsImlzcyI6IjY0MjUzNDViZGNmMmNmMWM0ZWE3MDAyZSIsInN0aXRjaF9kZXZJZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsInN0aXRjaF9kb21haW5JZCI6IjY0MjNhMGM4ZmUzYmYzYTNjYTJkM2EzMCIsInN1YiI6IjY0MjNhMGZlZGI2MTg4Y2ZhNDUzOGZmOCIsInR5cCI6ImFjY2VzcyJ9.rjNeVi1nHyglY9ecaPZKgOdYnxbuOemCzVZZucjITl0' \
+    curl -X POST 'https://ap-southeast-1.aws.realm.mongodb.com/api/client/v2.0/app/data-gipvp/graphql' \
+    --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYWFzX2RldmljZV9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsImJhYXNfZG9tYWluX2lkIjoiNjQyM2EwYzhmZTNiZjNhM2NhMmQzYTMwIiwiZXhwIjoxNjgwMTkyODE5LCJpYXQiOjE2ODAxOTEwMTksImlzcyI6IjY0MjVhZTJiZDliYmE0NjAxOWFjOGMyZiIsInN0aXRjaF9kZXZJZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsInN0aXRjaF9kb21haW5JZCI6IjY0MjNhMGM4ZmUzYmYzYTNjYTJkM2EzMCIsInN1YiI6IjY0MjNhMGZlZGI2MTg4Y2ZhNDUzOGZmOCIsInR5cCI6ImFjY2VzcyJ9.rNDOIXPTS70VlT6cKZgaHOJRsXq9W3H3BElMcxTG7fY' \
     --header 'Content-Type: application/json' \
     --data-raw '{
         "query": "query user { users { _id email name} }"

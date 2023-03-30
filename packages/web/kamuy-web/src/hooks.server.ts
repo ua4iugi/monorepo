@@ -1,3 +1,4 @@
+import { get } from 'svelte/store';
 import type { Handle } from '@sveltejs/kit';
 import { MONGODB_DATA_API_KEY } from '$env/static/private';
 import { accessToken } from '$lib/stores';
@@ -26,9 +27,7 @@ export const handle = (async ({ event, resolve }) => {
 		console.log('LOGIN finished. access_token is ' + json['access_token']);
 		accessToken.set(json['access_token']);
 	} else {
-		accessToken.subscribe((value) => {
-			console.log('Already LOGIN. access_token is ' + value);
-		});
+		console.log('Already LOGIN. access_token is ' + get(accessToken));
 	}
 	return await resolve(event);
 }) satisfies Handle;

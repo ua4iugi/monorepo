@@ -16,12 +16,17 @@
     - サインアップする(Google|GitHub と ID 連携も OK)
     - ログインする
     - `ORGANIZATION` からプロジェクトを作成する(`kamuy-db`)
-    - `Database` からクラスターを作成する(`Cluster0`)
+    - `Data Services`/`Database` からクラスターを作成する(`Cluster0`)
       - `Browse Collections` からデータベースを作成する(`kamuy`)
         - `kamuy` ユーザのパスワードを記録しておく
       - `Connect` の `Connect you application` から URL を記録する
         - 例:`mongodb+srv://kamuy:<password>@cluster0.riulps0.mongodb.net/?retryWrites=true&w=majority`
-    - `Data API` からデータAPIをセットアップする
+    - `App Services`/`Create a New App` からアプリを作成する(`data`)
+      ```text
+      App ID: data-gipvp
+      region: Singapore (ap-southeast-1) • AWS
+      ```
+    - `Data API` からデータ API をセットアップする TODO:削除予定
       - [Read and Write with the Data API](https://www.mongodb.com/docs/atlas/api/data-api/)
       - `Data API Key` を記録しておく
 

@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { mongoDb } from '$lib/mongoDb';
+import { mongodb } from '$lib/server/mongodb';
 
-export const load = (async () => {
-	const res = await mongoDb(`{
+export const load = (async ({fetch}) => {
+	const res = await mongodb(fetch, `{
 		"query": "query { user { _id email name} }"
 	}`);
 	return { user: (await res.json())['data']['user'] };
